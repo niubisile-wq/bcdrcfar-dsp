@@ -71,7 +71,7 @@ calibration mechanism for nonstationary sea clutter.
 \item Background-conditioned CFAR calibration targets acquisition-level reliability.
 \item BC-DRCFAR reduces factor-2 false-alarm violations on synthetic sea clutter.
 \item Retrospective IPIX results improve acquisition-level false-alarm calibration.
-\item Robustness audits characterize temporal and domain reliability.
+\item Reliability audits trace temporal drift and external-source reproducibility.
 \end{highlights}
 
 \begin{keyword}
@@ -560,10 +560,10 @@ test.
 
 \begin{table}[!htbp]
 \centering
-\small
-\caption{Synthetic benchmark design. The controlled benchmark varies clutter
-mechanism, severity, slow-time support, reference support, and target
-false-alarm operating point under frozen splits.}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{0.86}
+\caption{Synthetic benchmark design under frozen splits.}
 \label{tab:synthetic-design}
 \begin{tabularx}{\textwidth}{lX}
 \toprule
@@ -586,6 +586,8 @@ point \\
 \bottomrule
 \end{tabularx}
 \end{table}
+\normalsize
+\renewcommand{\arraystretch}{1}
 \FloatBarrier
 
 \subsection{Retrospective IPIX evaluation}
@@ -662,11 +664,14 @@ signal-to-clutter ratio to show the detection trade-off associated with
 calibration.
 
 These metrics are read together. Pooled $P_{\mathrm{fa}}$ confirms that a method
-is calibrated on average. The factor-2 metric counts acquisitions whose observed
-false-alarm rate moves outside a practical tolerance band. The log-scale error
-measures how far those deviations move from the declared value. $P_{\mathrm{d}}$
-then shows whether the calibration gain is obtained while preserving target
-detection performance.
+is calibrated on average. The synthetic benchmark reports the factor-2
+violation rate, which counts acquisitions whose observed false-alarm rate moves
+outside a practical tolerance band. The measured IPIX cohort reports the
+complementary factor-2 reliability score used by the acquisition audit, where
+larger values indicate closer adherence to the declared operating point. The
+log-scale error measures the size of the remaining deviations, and
+$P_{\mathrm{d}}$ shows whether the calibration gain is obtained while
+preserving target detection performance.
 
 For the real-data cohort, the acquisition is the primary statistical unit.
 Polarization, range-bin, and slow-time blocks are nested observations within an
@@ -679,14 +684,15 @@ inside each file.
 \subsection{External reliability audits}
 \label{subsec:external}
 
-Reliability audits cover temporal, source, and external-domain behaviour. The
-long-horizon IPIX holdout measures temporal drift under a fixed evaluation
-protocol. Fold-level source audits identify real source difficulty. Birmingham
-626 is used for raw-data accessibility and MAT/HDF5 chunk recovery; the latest
-audit recovered three HDF5 raw-data chunk nodes, 171 indexed chunk records, and
-148 successfully decoded chunk payloads from the cached prefix. St Andrews and
-related external-domain checks extend the transfer evaluation beyond the main
-IPIX setting \cite{birmingham626,remote2019realistic,hamidi2024target}.
+Reliability audits cover temporal drift, source difficulty, and external-source
+reproducibility. The long-horizon IPIX holdout measures temporal drift under a
+fixed evaluation protocol. Fold-level source audits identify real source
+difficulty. Birmingham 626 is used for raw-data accessibility and MAT/HDF5
+chunk recovery; the latest audit recovered three HDF5 raw-data chunk nodes, 171
+indexed chunk records, and 148 successfully decoded chunk payloads from the
+cached prefix. St Andrews and related source checks record the data-path and
+domain-positioning evidence that accompanies the frozen IPIX evaluation
+\cite{birmingham626,remote2019realistic,hamidi2024target}.
 
 \section{Results}
 \label{sec:results}
@@ -695,7 +701,7 @@ The results follow the evaluation route defined above. The synthetic benchmark
 tests calibration when the clutter source and operating point are controlled.
 The IPIX evaluation then applies frozen calibration artifacts to
 acquisition-disjoint measured data. Ablations isolate the background information
-used by the feature head, and temporal, source, and external-domain audits close
+used by the feature head, and temporal/source reproducibility audits complete
 the reliability analysis.
 
 \subsection{Controlled benchmark: BC-DRCFAR reduces false-alarm excursions}
@@ -727,7 +733,7 @@ calibration error while preserving target detection at 0 dB.}
 
 The main improvement is acquisition-level calibration reliability.
 The pooled $P_{\mathrm{fa}}$ confirms that the declared operating point is
-matched on average, while the factor-2 metric shows how often individual
+matched on average, while the factor-2 violation rate shows how often individual
 conditions remain close to that point. The drop from 83.3\% to 18.8\% means that
 BC-DRCFAR suppresses the acquisition-specific false-alarm bursts that are
 hidden by pooled summaries. The simultaneous increase in $P_{\mathrm{d}}$ at
@@ -768,10 +774,11 @@ The retrospective IPIX cohort showed the same calibration pattern. With frozen
 calibration artifacts, the feature head produced a macro $P_{\mathrm{fa}}$ of
 0.009998. Its acquisition-level absolute
 log-$P_{\mathrm{fa}}$ error was 0.199, compared with 0.213 for scalar
-calibration and 0.299 for GO-CFAR. The feature head satisfied the acquisition
-factor-2 condition in 7 of 9 acquisitions. The primary detection probability was
-0.282, close to the GO-CFAR value of 0.286. The measured-data gain lay mainly in
-false-alarm calibration, with little change in the detection trade-off.
+calibration and 0.299 for GO-CFAR. Its factor-2 reliability score was 0.846,
+compared with 0.830 for scalar calibration. The primary detection probability
+was 0.282, close to the GO-CFAR value of 0.286. The measured-data gain lay
+mainly in false-alarm calibration, with little change in the detection
+trade-off.
 
 Figure~\ref{fig:ipix-acquisition} places the retrospective IPIX result at the
 acquisition level. The panels separate acquisition-level false-alarm error,
@@ -812,13 +819,14 @@ calibration trade-off across the development and retrospective settings.
 \begin{table}[!htbp]
 \centering
 \small
-\caption{Retrospective IPIX calibration trade-off. The feature head is the main
-external-acquisition reliability result, while scalar and low-rank variants are
-mechanistic comparisons.}
+\caption{Retrospective IPIX calibration trade-off. The factor-2 reliability
+score is higher-is-better in this measured-cohort audit. The feature head is the
+main external-acquisition reliability result, while scalar and low-rank variants
+are mechanistic comparisons.}
 \label{tab:ipix}
 \begin{tabularx}{\textwidth}{lYYYY}
 \toprule
-Family & Macro $P_{\mathrm{fa}}$ & Factor-2 metric & Primary $P_{\mathrm{d}}$ & Abs. log10 error \\
+Family & Macro $P_{\mathrm{fa}}$ & Factor-2 reliability & Primary $P_{\mathrm{d}}$ & Abs. log10 error \\
 \midrule
 Development scalar & 0.009792 & 0.845 & 0.375 & 0.278 \\
 Development low-rank & 0.011479 & 0.200 & 0.393 & -- \\
@@ -857,7 +865,7 @@ background-conditioned family remains close across several ablations, showing
 that the gain is distributed across calibration features and remains stable
 across multiple descriptor choices.
 
-\subsection{Temporal and external audits: reliability remains traceable}
+\subsection{Temporal and source audits: reliability remains traceable}
 \label{subsec:boundary-results}
 
 The long-horizon holdout shows how calibration behaves under temporal drift.
@@ -865,32 +873,32 @@ Scalar calibration changed from early $P_{\mathrm{d}}=0.4663$ to late
 $P_{\mathrm{d}}=0.2625$, while the feature head changed from 0.4742 to 0.2782.
 Under the same split, the feature head reduced the worsening in calibration
 error. Fold-level audits identified real source difficulty in the hardest folds,
-beyond sample-count imbalance. Domain audits placed IPIX inside the learned
-acceptance region, and the external-domain checks provided a reproducible
-transfer evaluation beyond the main IPIX setting.
+beyond sample-count imbalance. Domain-positioning checks placed IPIX inside the
+learned acceptance region, and the Birmingham 626 audit traced an external
+public archive down to decoded raw-data chunks.
 
 These audits make the reliability result traceable. The long-horizon split
 shows that temporal drift affects both detection and calibration in measured
 sea clutter. The feature head reduces the calibration worsening under the same
 temporal split, matching the behaviour targeted by background conditioning. The
 fold-level audit links difficult folds to source structure, and the
-external-domain checks document how far the current calibration evidence can be
-followed beyond the main IPIX evaluation. Table~\ref{tab:boundary} summarizes
-the ablation and reliability checks that support this mechanism.
+external-source checks document how the data path can be followed beyond the
+main IPIX evaluation. Table~\ref{tab:boundary} summarizes the ablation and
+reliability checks that support this mechanism.
 
 Figure~\ref{fig:mechanism-audit} provides the mechanism-level counterpart to
 Table~\ref{tab:boundary}. It links feature ablation, long-horizon drift,
-source-fold structure, and external-domain transfer into one reliability chain,
-showing that the calibration gain is tied to background information rather than
-to a single split or a single reporting metric.
+source-fold structure, and external-source reproducibility into one reliability
+chain, showing that the calibration gain is tied to background information
+rather than to a single split or a single reporting metric.
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{fig4_mechanism_audit.pdf}
 \caption{Mechanism and reliability audit. Background-feature ablations are
-presented together with temporal, source, and external-domain checks to show how
-acquisition-conditioned calibration produces the observed false-alarm
-reliability gain.}
+presented together with temporal, source, and external-source reproducibility
+checks to show how acquisition-conditioned calibration produces the observed
+false-alarm reliability gain.}
 \label{fig:mechanism-audit}
 \end{figure}
 \FloatBarrier
@@ -899,8 +907,8 @@ reliability gain.}
 \centering
 \small
 \caption{Ablation and reliability audit summary. The table combines mechanism
-checks from feature ablation with temporal, source, and external-domain
-reliability audits.}
+checks from feature ablation with temporal drift, source difficulty, and
+raw-data reproducibility audits.}
 \label{tab:boundary}
 \begin{tabularx}{\textwidth}{lXX}
 \toprule
@@ -918,10 +926,10 @@ Long-horizon IPIX holdout & Feature head softens calibration drift under
 temporal split & Temporal reliability audit \\
 Fold 3/4 source audit & Difficult folds reflect genuine source difficulty &
 Source-difficulty audit \\
-Birmingham 626 & 148 prefix chunks decoded from 171 indexed records & Raw-data
-reproducibility audit \\
-St Andrews/domain audits & External-domain checks evaluate transfer reliability
-& Domain-reliability audit \\
+Birmingham 626 raw-data audit & 148 prefix chunks decoded from 171 indexed
+records & Raw-data reproducibility audit \\
+External-source checks & Public source access paths and domain position are
+recorded & Source-traceability audit \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -1024,10 +1032,11 @@ The reliability audits add the deployment perspective. The long-horizon split
 shows that temporal drift changes both detection probability and calibration
 error, while background conditioning softens the calibration drift. Fold-level
 audits show that the hardest folds reflect genuine source difficulty and
-sample-count structure. Birmingham 626 adds a raw-data reproducibility check: the
-remote ZIP, MAT/HDF5 schema, B-tree chunk index, and chunk payloads can be traced
-to decoded complex IQ blocks. That traceable path extends the evidence chain for
-acquisition-level CFAR calibration.
+sample-count structure. Birmingham 626 adds a raw-data reproducibility check:
+the remote ZIP, MAT/HDF5 schema, B-tree chunk index, and chunk payloads can be
+traced to decoded complex IQ blocks. This audit strengthens the reproducibility
+layer of the study and keeps the measured-performance claim anchored in the
+frozen IPIX cohort and the controlled benchmark.
 
 Taken together, the experiments support a clear contribution to radar signal
 processing: background-conditioned calibration turns CFAR from a local
@@ -1062,8 +1071,9 @@ benchmark, BC-DRCFAR reduces the factor-2 violation rate from 83.3\% to 18.8\%,
 lowers the mean absolute log10-$P_{\mathrm{fa}}$ error from 1.070 to 0.174, and
 raises $P_{\mathrm{d}}$ at 0 dB from 0.740 to 0.835. On retrospective IPIX
 acquisitions, the feature head keeps the macro false-alarm probability near the
-nominal level and satisfies the acquisition factor-2 condition in 7 of 9
-acquisitions. The ablation and reliability audits point to the same mechanism:
+nominal level and gives the strongest factor-2 reliability score among the
+retrospective calibration variants. The ablation and reliability audits point to
+the same mechanism:
 background-conditioned calibration gives CFAR a practical route to reliable
 radar target detection in nonstationary sea clutter.
 
