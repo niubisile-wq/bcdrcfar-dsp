@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+title: "BC-DRCFAR for Reliable Radar Target Detection in Nonstationary Sea Clutter"
+message: "If you use this code or processed result summaries, please cite the associated paper and archived software record."
+type: software
+authors:
+  - family-names: Liu
+    given-names: Zixuan
+  - family-names: Xiong
+    given-names: Wei
+repository-code: "https://github.com/niubisile-wq/bcdrcfar-dsp"
+license: MIT
+date-released: 2026-08-09
+version: "v1.0.0"

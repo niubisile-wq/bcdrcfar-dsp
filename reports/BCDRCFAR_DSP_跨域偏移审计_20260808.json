@@ -1,0 +1,103 @@
+{
+  "domain_shift_adjudication": "Frozen P2 risk has hardware/observation-domain-dependent orientation. Inverted scores are diagnostic only and must not be deployed or promoted. A future method needs an explicit domain-validity gate and fresh external data.",
+  "domain_shift_top_five_classifier_features": [
+    "log_soft_threshold",
+    "head_contamination",
+    "log_hard_soft_ratio",
+    "head_distribution",
+    "head_global"
+  ],
+  "top_feature_event_direction_flip_count": 3,
+  "domain_reliability_gate": "CLOSED",
+  "accepted_domains": [
+    "IPIX",
+    "IPIX_269_high_sea",
+    "IPIX_287_low_sea"
+  ],
+  "abstained_domains": [
+    "St_Andrews_24GHz",
+    "St_Andrews_94GHz"
+  ],
+  "real_confirmatory_gate": "NO_GO",
+  "scan_domain_gate": "NO_GO",
+  "st_andrews_gate": "CLOSED",
+  "nexrad_gate": "ABSTAIN",
+  "p4_real_gain_over_multihead_ood": 0.0391074049809747,
+  "p4_real_gate_ci": [
+    0.007390833160100948,
+    0.08346372899741136
+  ],
+  "st_andrews_direct_risk_auroc": {
+    "24GHz": 0.3500298271831648,
+    "94GHz": 0.1803293711238031
+  },
+  "nexrad_failed_criteria": [
+    "complex_iq_available",
+    "slow_time_contiguous",
+    "target_exclusion_plan",
+    "minimum_sweeps",
+    "stare_mode_supported"
+  ],
+  "domain_table": [
+    {
+      "domain": "IPIX",
+      "records": 188416,
+      "support_fraction_outside_any_synthetic_1_99pct_bound": 0.4359130859375,
+      "support_mean_outside_feature_count": 0.4976859714673913,
+      "support_median_robust_feature_distance": 0.8008470638316634,
+      "support_q95_robust_feature_distance": 0.9386115283509041,
+      "risk_any_event_auroc": 0.5965013677030264,
+      "risk_spearman_with_false_alarm_count": 0.10657574548676281,
+      "risk_multihead_spearman": 0.7655601493145722,
+      "domain_gate": "ACCEPT"
+    },
+    {
+      "domain": "St_Andrews_24GHz",
+      "records": 13193,
+      "support_fraction_outside_any_synthetic_1_99pct_bound": 0.8259683165314939,
+      "support_mean_outside_feature_count": 1.7759417873114531,
+      "support_median_robust_feature_distance": 1.7272259829103491,
+      "support_q95_robust_feature_distance": 3.0105122020388664,
+      "risk_any_event_auroc": 0.3500298271831648,
+      "risk_spearman_with_false_alarm_count": -0.24796210563991422,
+      "risk_multihead_spearman": 0.07646811411791093,
+      "domain_gate": "ABSTAIN"
+    },
+    {
+      "domain": "St_Andrews_94GHz",
+      "records": 76960,
+      "support_fraction_outside_any_synthetic_1_99pct_bound": 0.9061590436590437,
+      "support_mean_outside_feature_count": 2.039423076923077,
+      "support_median_robust_feature_distance": 2.1588565185197366,
+      "support_q95_robust_feature_distance": 3.21492349539805,
+      "risk_any_event_auroc": 0.1803293711238031,
+      "risk_spearman_with_false_alarm_count": -0.49078455515514835,
+      "risk_multihead_spearman": 0.3871887841967545,
+      "domain_gate": "ABSTAIN"
+    },
+    {
+      "domain": "IPIX_269_high_sea",
+      "records": 512,
+      "support_fraction_outside_any_synthetic_1_99pct_bound": 0.33984375,
+      "support_mean_outside_feature_count": 0.3828125,
+      "support_median_robust_feature_distance": 0.800658576422598,
+      "support_q95_robust_feature_distance": 0.8850342749470309,
+      "risk_any_event_auroc": 0.47523613963039013,
+      "risk_spearman_with_false_alarm_count": -0.015133649148216764,
+      "risk_multihead_spearman": 0.5832306043361829,
+      "domain_gate": "ACCEPT"
+    },
+    {
+      "domain": "IPIX_287_low_sea",
+      "records": 512,
+      "support_fraction_outside_any_synthetic_1_99pct_bound": 0.26171875,
+      "support_mean_outside_feature_count": 0.32421875,
+      "support_median_robust_feature_distance": 0.8410543967941837,
+      "support_q95_robust_feature_distance": 0.9556167043365381,
+      "risk_any_event_auroc": 0.7982751540041069,
+      "risk_spearman_with_false_alarm_count": 0.22189092914539843,
+      "risk_multihead_spearman": 0.08617353529371373,
+      "domain_gate": "ACCEPT"
+    }
+  ]
+}

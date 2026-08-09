@@ -1,0 +1,9 @@
+family,cohort,scheme,macro_pfa,macro_factor2,macro_primary_pd,macro_absolute_log10_pfa_error,note
+development_scalar_global,development_full,global scalar,0.009792258522727273,0.8454545454545455,0.374755859375,0.2783316391531805,baseline scalar calibration
+development_grouped,development_full,grouped:global,0.0097922585227272,0.4,0.2466227213541666,,grouped tail multiplier calibration
+development_grouped,development_full,grouped:file_id,0.010009765625,0.0,0.010009765625,,grouped tail multiplier calibration
+development_grouped,development_full,grouped:polarization,0.0098299893465909,0.2,0.0096842447916666,,grouped tail multiplier calibration
+development_grouped,development_full,grouped:file_id_polarization,0.0100532670454545,0.0,0.0100260416666666,,grouped tail multiplier calibration
+development_lowrank_best,development_full,lowrank rank=2 w=0.03,0.0114790482954545,0.2,0.392919921875,,best low-rank calibration on the development grid
+retrospective_scalar,retrospective_external,scalar,0.008332483910283368,0.8298260381593715,0.2648654513888889,0.21319801975104008,"same retrospective cohort, scalar calibration"
+retrospective_feature_head,retrospective_external,feature head,0.009998010706018488,0.8459876543209875,0.2815483940972222,0.19949437017693564,external acquisition-disjoint feature head

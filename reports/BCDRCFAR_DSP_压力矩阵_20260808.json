@@ -1,0 +1,91 @@
+{
+  "output_files": {
+    "csv": "D:\\百度网盘拉取包\\dsp升级\\reports\\BCDRCFAR_DSP_压力矩阵_20260808.csv",
+    "json": "D:\\百度网盘拉取包\\dsp升级\\reports\\BCDRCFAR_DSP_压力矩阵_20260808.json",
+    "markdown": "D:\\百度网盘拉取包\\dsp升级\\reports\\BCDRCFAR_DSP_压力矩阵_20260808.md"
+  },
+  "rows": [
+    {
+      "artifact": "IPIX",
+      "axis": "domain_reliability",
+      "boundary": "post-P4 exploratory mechanism and method development; requires fresh domain-level confirmation",
+      "evidence": "coverage=0.995, auroc=0.595",
+      "gate": "ACCEPT",
+      "next_step": "freeze this gate and validate on an entirely new radar domain",
+      "pass_signal": "ACCEPT"
+    },
+    {
+      "artifact": "IPIX_269_high_sea",
+      "axis": "domain_reliability",
+      "boundary": "post-P4 exploratory mechanism and method development; requires fresh domain-level confirmation",
+      "evidence": "coverage=1.000, auroc=0.475",
+      "gate": "ACCEPT",
+      "next_step": "freeze this gate and validate on an entirely new radar domain",
+      "pass_signal": "ACCEPT"
+    },
+    {
+      "artifact": "IPIX_287_low_sea",
+      "axis": "domain_reliability",
+      "boundary": "post-P4 exploratory mechanism and method development; requires fresh domain-level confirmation",
+      "evidence": "coverage=0.994, auroc=0.797",
+      "gate": "ACCEPT",
+      "next_step": "freeze this gate and validate on an entirely new radar domain",
+      "pass_signal": "ACCEPT"
+    },
+    {
+      "artifact": "St_Andrews_24GHz",
+      "axis": "domain_reliability",
+      "boundary": "post-P4 exploratory mechanism and method development; requires fresh domain-level confirmation",
+      "evidence": "coverage=0.373, auroc=0.674",
+      "gate": "ABSTAIN",
+      "next_step": "freeze this gate and validate on an entirely new radar domain",
+      "pass_signal": "ABSTAIN"
+    },
+    {
+      "artifact": "St_Andrews_94GHz",
+      "axis": "domain_reliability",
+      "boundary": "post-P4 exploratory mechanism and method development; requires fresh domain-level confirmation",
+      "evidence": "coverage=0.202, auroc=0.632",
+      "gate": "ABSTAIN",
+      "next_step": "freeze this gate and validate on an entirely new radar domain",
+      "pass_signal": "ABSTAIN"
+    },
+    {
+      "artifact": "P4_real_confirmatory",
+      "axis": "confirmatory_real",
+      "boundary": "partial external transfer, not a full P4 pass",
+      "evidence": "gain_over_ood=0.039, gain_ci_low=0.007, positive_acq=7, rate_ratio=1.965",
+      "gate": "NO_GO",
+      "next_step": "Treat as partial external transfer only; do not retune on the confirmatory set.",
+      "pass_signal": "NO_GO"
+    },
+    {
+      "artifact": "IPIX scan domain",
+      "axis": "scan_domain",
+      "boundary": "domain-validity confirmation only; scanning land/sea scene is not a sea-clutter CFAR performance test",
+      "evidence": "observed_action=ACCEPT, expected_action=ABSTAIN, coverage=0.879",
+      "gate": "NO_GO",
+      "next_step": "Develop explicit acquisition-context and observation-semantic evidence using development domains, then freeze a new rule for a fresh sea-clutter domain.",
+      "pass_signal": "NO_GO"
+    },
+    {
+      "artifact": "St Andrews holdout",
+      "axis": "st_andrews_holdout",
+      "boundary": "exploratory untouched-row holdout from already downloaded prefixes; not an independent acquisition confirmation and cannot alone open the LLM gate",
+      "evidence": "24GHz direct_risk_auroc=0.350, 94GHz direct_risk_auroc=0.180, ratio_ci_24=[0.5194131090305047, 0.6327942540011804], ratio_ci_94=[0.7400251792797128, 0.7861046917003922]",
+      "gate": "CLOSED",
+      "next_step": "Treat as exploratory untouched-prefix holdout only; it does not open the gate.",
+      "pass_signal": "CLOSED"
+    },
+    {
+      "artifact": "NEXRAD negative control",
+      "axis": "negative_control",
+      "boundary": "This negative control tests whether the semantic gate rejects a real but unsupported scanning radar product. It is not sea-clutter CFAR-risk confirmation and cannot open the LLM experiment gate.",
+      "evidence": "failed_criteria=complex_iq_available,slow_time_contiguous,target_exclusion_plan,minimum_sweeps,stare_mode_supported, observed_action=True",
+      "gate": "ABSTAIN",
+      "next_step": "Use as contract-proof that unsupported radar products must still ABSTAIN.",
+      "pass_signal": "ABSTAIN"
+    }
+  ],
+  "status": "BCDRCFAR_PRESSURE_MATRIX_SUMMARY_COMPLETE"
+}

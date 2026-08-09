@@ -1,0 +1,12 @@
+numpy
+pandas
+scipy
+scikit-learn
+torch
+matplotlib
+seaborn
+h5py
+joblib
+requests
+urllib3
+jsonschema

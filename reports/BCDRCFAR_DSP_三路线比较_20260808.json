@@ -1,0 +1,129 @@
+{
+  "development_summary_sha256": "5c5e22148daa71017b77259bb9a9f1c964a248ff289acbe66b5f0e7197d989ce",
+  "development_table": [
+    {
+      "cohort": "development_full",
+      "family": "development_scalar_global",
+      "macro_absolute_log10_pfa_error": 0.2783316391531805,
+      "macro_factor2": 0.8454545454545455,
+      "macro_pfa": 0.009792258522727273,
+      "macro_primary_pd": 0.374755859375,
+      "note": "baseline scalar calibration",
+      "scheme": "global scalar"
+    },
+    {
+      "cohort": "development_full",
+      "family": "development_grouped",
+      "macro_absolute_log10_pfa_error": NaN,
+      "macro_factor2": 0.4,
+      "macro_pfa": 0.0097922585227272,
+      "macro_primary_pd": 0.2466227213541666,
+      "note": "grouped tail multiplier calibration",
+      "scheme": "grouped:global"
+    },
+    {
+      "cohort": "development_full",
+      "family": "development_grouped",
+      "macro_absolute_log10_pfa_error": NaN,
+      "macro_factor2": 0.0,
+      "macro_pfa": 0.010009765625,
+      "macro_primary_pd": 0.010009765625,
+      "note": "grouped tail multiplier calibration",
+      "scheme": "grouped:file_id"
+    },
+    {
+      "cohort": "development_full",
+      "family": "development_grouped",
+      "macro_absolute_log10_pfa_error": NaN,
+      "macro_factor2": 0.2,
+      "macro_pfa": 0.0098299893465909,
+      "macro_primary_pd": 0.0096842447916666,
+      "note": "grouped tail multiplier calibration",
+      "scheme": "grouped:polarization"
+    },
+    {
+      "cohort": "development_full",
+      "family": "development_grouped",
+      "macro_absolute_log10_pfa_error": NaN,
+      "macro_factor2": 0.0,
+      "macro_pfa": 0.0100532670454545,
+      "macro_primary_pd": 0.0100260416666666,
+      "note": "grouped tail multiplier calibration",
+      "scheme": "grouped:file_id_polarization"
+    },
+    {
+      "cohort": "development_full",
+      "family": "development_lowrank_best",
+      "macro_absolute_log10_pfa_error": NaN,
+      "macro_factor2": 0.2,
+      "macro_pfa": 0.0114790482954545,
+      "macro_primary_pd": 0.392919921875,
+      "note": "best low-rank calibration on the development grid",
+      "scheme": "lowrank rank=2 w=0.03"
+    }
+  ],
+  "grouped_summary_rows": 4,
+  "lowrank_best": {
+    "multipliers": {
+      "17|hh": 1.5504720211029053,
+      "17|hv": 1.5171650648117065,
+      "17|vh": 1.5156021118164062,
+      "17|vv": 1.4399875402450562,
+      "18|hh": 1.6946027278900146,
+      "18|hv": 1.6242167949676514,
+      "18|vh": 1.6177637577056885,
+      "18|vv": 1.593650460243225,
+      "25|hh": 1.541794776916504,
+      "25|hv": 1.834632396697998,
+      "25|vh": 1.859251618385315,
+      "25|vv": 1.4946033954620361,
+      "320|hh": 1.393292784690857,
+      "320|hv": 1.4196242094039917,
+      "320|vh": 1.4166399240493774,
+      "320|vv": 1.3699347972869873,
+      "54|hh": 1.4574360847473145,
+      "54|hv": 1.5275448560714722,
+      "54|vh": 1.531489372253418,
+      "54|vv": 1.3977751731872559
+    },
+    "positive_weight": 0.03,
+    "rank": 2,
+    "summary": {
+      "macro_factor2": 0.2,
+      "macro_pd": 0.392919921875,
+      "macro_pfa": 0.011479048295454547,
+      "positive_weight": 0.03,
+      "rank": 2
+    },
+    "target_pfa": 0.01
+  },
+  "lowrank_grid_rows": 5,
+  "output_files": {
+    "csv": "D:\\百度网盘拉取包\\dsp升级\\reports\\BCDRCFAR_DSP_三路线比较_20260808.csv",
+    "json": "D:\\百度网盘拉取包\\dsp升级\\reports\\BCDRCFAR_DSP_三路线比较_20260808.json",
+    "markdown": "D:\\百度网盘拉取包\\dsp升级\\reports\\BCDRCFAR_DSP_三路线比较_20260808.md"
+  },
+  "retrospective_table": [
+    {
+      "cohort": "retrospective_external",
+      "family": "retrospective_scalar",
+      "macro_absolute_log10_pfa_error": 0.21319801975104008,
+      "macro_factor2": 0.8298260381593715,
+      "macro_pfa": 0.008332483910283368,
+      "macro_primary_pd": 0.2648654513888889,
+      "note": "same retrospective cohort, scalar calibration",
+      "scheme": "scalar"
+    },
+    {
+      "cohort": "retrospective_external",
+      "family": "retrospective_feature_head",
+      "macro_absolute_log10_pfa_error": 0.19949437017693564,
+      "macro_factor2": 0.8459876543209875,
+      "macro_pfa": 0.009998010706018488,
+      "macro_primary_pd": 0.2815483940972222,
+      "note": "external acquisition-disjoint feature head",
+      "scheme": "feature head"
+    }
+  ],
+  "status": "BCDRCFAR_IPIX_CALIBRATION_TRADEOFF_SUMMARY_COMPLETE"
+}
