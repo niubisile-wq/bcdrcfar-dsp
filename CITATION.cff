@@ -8,6 +8,7 @@ authors:
   - family-names: Xiong
     given-names: Wei
 repository-code: "https://github.com/niubisile-wq/bcdrcfar-dsp"
+doi: "10.5281/zenodo.21855949"
 license: MIT
 date-released: 2026-08-09
 version: "v1.0.1"
