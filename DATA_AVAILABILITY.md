@@ -25,7 +25,7 @@ the raw radar data.
 
 ## Repository record
 
-This GitHub repository is intended to be archived through Zenodo after the first
+This GitHub repository is intended to be archived through Zenodo after the
 public release. Add the Zenodo DOI here after the DOI is minted:
 
 ```text
